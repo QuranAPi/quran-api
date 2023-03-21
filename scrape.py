@@ -110,7 +110,17 @@ dict = {1: 7,
 101: 11,
 102: 8,
 103: 3,
-104: 9}
+104: 9,
+105: 5,
+106: 4,
+107: 7,
+108: 3,
+109: 6,
+110: 3,
+111: 5,
+112: 4,
+113: 5,
+114: 6}
 
 
 def func(surah_num):
@@ -141,6 +151,5 @@ def func(surah_num):
     
 
         l.append(bidi_text)   
-    print(l)
+    return l
 
-print(func(1))
