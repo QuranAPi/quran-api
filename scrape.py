@@ -178,8 +178,8 @@ a_file.close()
 
 
 def fix():
-    x5 = ['أَلَم تَرَ كَيفَ فَعَلَ رَبُّكَ بِأَصحابِ الفيلِ',
-          'أَلَم يَجعَل كَيدَهُم في تَضليلٍ', 'وَأَرسَلَ عَلَيهِم طَيرًا أَبابيلَ', 'تَرميهِم بِحِجارَةٍ مِن سِجّيلٍ', 'فَجَعَلَهُم كَعَصفٍ مَأكولٍ']
+    x5 = ['قُل يا أَيُّهَا الكافِرونَ', 'لا أَعبُدُ ما تَعبُدونَ',
+          'لا أَعبُدُ ما تَعبُدونَ', 'وَلا أَنتُم عابِدونَ ما أَعبُدُ', 'وَلا أَنا عابِدٌ ما عَبَدتُم', 'وَلا أَنتُم عابِدونَ ما أَعبُدُ', 'لَكُم دينُكُم وَلِيَ دينِ']
 
     l = []
     for i in range(len(x5)):
@@ -189,7 +189,7 @@ def fix():
     a_file = open("quran.json", "r")
     json_object = json.load(a_file)
     a_file.close()
-    json_object['105']['ayas'] = l
+    json_object['109']['ayas'] = l
     a_file = open("quran.json", "w")
     json.dump(json_object, a_file)
     a_file.close()
@@ -200,7 +200,3 @@ def getaya(sura, number):
     json_object = json.load(a_file)
     a_file.close()
     return json_object[str(sura)]['ayas'][number-1]
-
-
-for i in range(1, 6):
-    print(getaya(105, i))
