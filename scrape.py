@@ -177,7 +177,9 @@ json_object = json.load(a_file)
 a_file.close()
 
 
-def fix():
+# Function to fix surahs that have no web page
+
+'''def fix():
     x5 = ['قُل يا أَيُّهَا الكافِرونَ', 'لا أَعبُدُ ما تَعبُدونَ',
           'لا أَعبُدُ ما تَعبُدونَ', 'وَلا أَنتُم عابِدونَ ما أَعبُدُ', 'وَلا أَنا عابِدٌ ما عَبَدتُم', 'وَلا أَنتُم عابِدونَ ما أَعبُدُ', 'لَكُم دينُكُم وَلِيَ دينِ']
 
@@ -192,7 +194,7 @@ def fix():
     json_object['109']['ayas'] = l
     a_file = open("quran.json", "w")
     json.dump(json_object, a_file)
-    a_file.close()
+    a_file.close()'''
 
 
 def getaya(sura, number):
@@ -200,3 +202,54 @@ def getaya(sura, number):
     json_object = json.load(a_file)
     a_file.close()
     return json_object[str(sura)]['ayas'][number-1]
+
+
+def getsurah(sura):
+    a_file = open("quran.json", "r")
+    json_object = json.load(a_file)
+    a_file.close()
+    return json_object[str(sura)]
+
+
+def names():
+    numbers = []
+    names = []
+    orders = []
+    places = []
+    verses = []
+    counter = 0
+    page = requests.get("https://al-quran.info/home")
+    soup = BeautifulSoup(page.text, "html.parser")
+    price = soup.findAll("a", attrs={'rel': 'nofollow'})
+    for i in price:
+        if counter == 0:
+            numbers.append(i.text)
+            counter += 1
+        elif counter == 1:
+            names.append(i.text)
+            counter += 1
+        elif counter == 2:
+            orders.append(i.text)
+            counter += 1
+        elif counter == 3:
+            places.append(i.text)
+            counter += 1
+        elif counter == 4:
+            verses.append(i.text)
+            counter = 0
+    names = names[0:-1]
+    numbers = numbers[0:-1]
+    a_file = open("quran.json", "r")
+    json_object = json.load(a_file)
+    a_file.close()
+    for i in range(len(numbers)):
+        json_object[numbers[i]]['name'] = names[i]
+        json_object[numbers[i]]['order'] = orders[i]
+        json_object[numbers[i]]['place'] = places[i]
+        json_object[numbers[i]]['length'] = verses[i]
+    a_file = open("quran.json", "w")
+    json.dump(json_object, a_file)
+    a_file.close()
+
+
+names()
