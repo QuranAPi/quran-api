@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quran API Documentation</title>
+    <style>
+        /* Box styles */
+        .method-box {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 8px;
+        }
+
+        /* Method-specific box colors */
+        .get-box {
+            background-color: #42b983;
+            color: #fff;
+        }
+
+        .post-box {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .put-box {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .delete-box {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        /* Other styles for the template documentation page */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 16px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 8px;
+        }
+
+        nav a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 16px;
+        }
+
+        main {
+            padding: 16px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Quran API Documentation</h1>
+    </header>
+    <nav>
+        <a href="#get-surahs">GET /quran/surahs</a>
+        <a href="#get-surah">GET /quran/surah/{surah_number}</a>
+        <a href="#get-ayah-number">GET /quran/ayah_number/{ayah_number}</a>
+        <a href="#get-makki-surahs">GET /quran/makki</a>
+        <a href="#get-madani-surahs">GET /quran/madani</a>
+    </nav>
+    <main>
+        <section>
+            <h2 id="get-surahs">GET /quran/surahs</h2>
+            <p>Returns a list of all surahs in the Quran.</p>
+            <h3>Request</h3>
+            <pre><code><span class="method-box get-box">GET</span> /quran/surahs</code></pre>
+            <h3>Response</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                                    <tr>
+                                        <td>surahs</td>
+                                        <td>array</td>
+                                        <td>An array of objects representing each surah in the Quran.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>surah_number</td>
+                                        <td>integer</td>
+                                        <td>The number of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>name</td>
+                                        <td>string</td>
+                                        <td>The name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>english_name</td>
+                                        <td>string</td>
+                                        <td>The English name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>english_name_translation</td>
+                                        <td>string</td>
+                                        <td>The English translation of the name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>number_of_ayahs</td>
+                                        <td>integer</td>
+                                        <td>The number of ayahs in the surah.</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                    </section>
+                                    <section>
+                                        <h2 id="get-surah">GET /quran/surah/{surah_number}</h2>
+                                        <p>Returns the details of a specific surah in the Quran.</p>
+                                        <h3>Request</h3>
+                                        <pre><code><span class="method-box get-box">GET</span> /quran/surah/{surah_number}</code></pre>
+                                        <h3>Response</h3>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Field</th>
+                                                    <th>Type</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>surah_number</td>
+                                                    <td>integer</td>
+                                                    <td>The number of the surah.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>name</td>
+                                                    <td>string</td>
+                                                    <td>The name of the surah.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>english_name</td>
+                                                    <td>string</td>
+                                                    <td>The English name of the surah.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>english_name_translation</td>
+                                                    <td>string</td>
+                                                    <td>The English translation of the name of the surah.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>number_of_ayahs</td>
+                                                    <td>integer</td>
+                                                    <td>The number of ayahs in the surah.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ayahs</td>
+                                                    <td>array</td>
+                                                    <td>An array of objects representing each ayah in the surah.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </section>
+                                    <section>
+                                        <h2 id="get-ayah-number">GET /quran/ayah_number/{ayah_number}</h2>
+                                        <p>Returns the details of a specific ayah in the Quran.</p>
+                                        <h3>Request</h3>
+                                        <pre><code><span class="method-box get-box">GET</span> /quran/ayah_number/{ayah_number}</code></pre>
+                                        <h3>Response</h3>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Field</th>
+                                                    <th>Type</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>surah_number</td>
+                                                    <td>integer</td>
+                                                    <td>The number of the surah the verse is in</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ayah_number_within_surah</td>
+                                                    <td>integer</td>
+                                                    <td>Aya number within the surah it is in</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ayah_content</td>
+                                                    <td>string</td>
+                                                    <td>The content of the aya.</td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </section>
+                        <section>
+                            <h2 id="get-makki-surahs">GET /quran/makki</h2>
+                            <p>Returns a list of all surahs revealed in Mecca</p>
+                            <h3>Request</h3>
+                            <pre><code><span class="method-box get-box">GET</span> /quran/makki</code></pre>
+                            <h3>Response</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <tr>
+                                        <td>surahs</td>
+                                        <td>array</td>
+                                        <td>An array of objects representing each surah in the Quran.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>surah_number</td>
+                                        <td>integer</td>
+                                        <td>The number of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>name</td>
+                                        <td>string</td>
+                                        <td>The name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>english_name</td>
+                                        <td>string</td>
+                                        <td>The English name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>english_name_translation</td>
+                                        <td>string</td>
+                                        <td>The English translation of the name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>number_of_ayahs</td>
+                                        <td>integer</td>
+                                        <td>The number of ayahs in the surah.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section>
+                            <h2 id="get-madani-surahs">GET /quran/madani</h2>
+                            <p>Returns a list of all surahs revealed in Medina</p>
+                            <h3>Request</h3>
+                            <pre><code><span class="method-box get-box">GET</span> /quran/madani</code></pre>
+                            <h3>Response</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <tr>
+                                        <td>surahs</td>
+                                        <td>array</td>
+                                        <td>An array of objects representing each surah in the Quran.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>surah_number</td>
+                                        <td>integer</td>
+                                        <td>The number of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>name</td>
+                                        <td>string</td>
+                                        <td>The name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>english_name</td>
+                                        <td>string</td>
+                                        <td>The English name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>english_name_translation</td>
+                                        <td>string</td>
+                                        <td>The English translation of the name of the surah.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>number_of_ayahs</td>
+                                        <td>integer</td>
+                                        <td>The number of ayahs in the surah.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+    </main>
+</body>
+</html>
