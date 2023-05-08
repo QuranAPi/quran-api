@@ -3,4 +3,4 @@ bs4==0.0.1
 requests==2.26.0
 arabic-reshaper==2.1.4
 python-bidi==0.4.2
-gunicorn==20.0.4
+gunicorn==20.1.0
