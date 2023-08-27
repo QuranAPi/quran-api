@@ -10,12 +10,16 @@ from datetime import datetime, timedelta
 from functools import wraps
 from jwt import ExpiredSignatureError, DecodeError
 from flask_bcrypt import Bcrypt
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+import creds
 
 app = Flask(__name__)
+limiter = Limiter(app, key_func=get_remote_address)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = 'oGEvD8s_M_ifvk3u822SxuUa8QUxTTyS'
+app.config['SECRET_KEY'] = creds.secret_key
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -78,7 +82,6 @@ def token_required(func):
     return decorated
 
 
-# Load the JSON data
 with open('quran.json') as f:
     quran_data = json.load(f)
 
@@ -149,6 +152,7 @@ def register():
 # Get all surahs
 @app.route('/surahs/all')
 @token_required
+@limiter.limit('10 per day')
 def get_surahs():
     surahs = []
     for surah in quran_data.values():
@@ -165,6 +169,7 @@ def get_surahs():
 
 # Get a surah by its number
 @app.route('/surahs/<int:surah_number>')
+@limiter.limit('10 per day')
 def get_surah(surah_number):
     if str(surah_number) not in quran_data:
         return jsonify({'error': 'Surah not found'}), 404
@@ -181,6 +186,7 @@ def get_surah(surah_number):
 
 
 @app.route('/verse/<int:verse_number>')
+@limiter.limit('10 per day')
 def get_ayah_number(ayah_number):
     total_ayahs = 0
     for k, v in quran_data.items():
@@ -195,6 +201,7 @@ def get_ayah_number(ayah_number):
 
 
 @app.route('/surahs/makki')
+@limiter.limit('10 per day')
 def get_makki_surahs():
     makki_surahs = []
     for surah in quran_data.values():
@@ -204,6 +211,7 @@ def get_makki_surahs():
 
 
 @app.route('/surahs/madani')
+@limiter.limit('10 per day')
 def get_madani_surahs():
     madani_surahs = []
     for surah in quran_data.values():
