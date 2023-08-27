@@ -126,8 +126,7 @@ def dashboard():
     },
     app.config['SECRET_KEY'])
     
-    return jsonify({'token': token}, {'username': username})
-    # return render_template('dashboard.html')
+    return render_template('dashboard.html', token=token, username=username)
 
 @app.route('/documentation', methods=['GET', 'POST'])
 def documentation():

@@ -10,6 +10,7 @@
 
 <body>
     <h1>Logged in!</h1>
+    <h2>Hi {{ username }}, your token is: {{ token }}</h2>
     <a href="{{url_for('documentation')}}">Documentation</a><br>
     <a href="{{url_for('logout')}}">Logout</a>
 </body>
