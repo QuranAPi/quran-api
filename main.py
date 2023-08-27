@@ -15,7 +15,7 @@ from flask_limiter.util import get_remote_address
 import creds
 
 app = Flask(__name__)
-limiter = Limiter(app, key_func=get_remote_address)
+limiter = Limiter(get_remote_address, app=app)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
