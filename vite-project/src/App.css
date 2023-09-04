@@ -1,0 +1,176 @@
+@font-face {
+    font-family: Quran;
+    src: url(assets/Nabi.ttf);
+}
+
+@font-face {
+    font-family: Quran-2;
+    src: url(assets/Quran-2.otf);
+}
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.block {
+    position: relative;
+    text-align: center;
+    /* background-color: aqua; */
+    max-width: 50%;
+    margin: 0 auto;
+    top:100px
+}
+
+.verse-block {
+    max-height: 300px;
+}
+
+.title-block {
+    top: 0px;
+    position: sticky;
+    background-color: white;
+    z-index: 10;
+    max-width: 70%;
+    min-height: 60px;
+    border-bottom: 2px solid #000;
+}
+
+.about-block {
+    top:500px;
+}
+
+.get-started.block {
+}
+
+.title {
+    position: absolute;
+    font-size: 40px;
+    left: 0;
+    top: -20px;
+}
+
+.subtitle {
+    position: absolute;
+    font-size: 20px;
+    left: 190px;
+    top: 5px
+    
+}
+
+.heading {
+    position: relative;
+    font-size: 22.5px;
+}       
+
+.paragraph {
+    font-size: 20px;
+}
+
+.verse-arabic {
+    max-height: 80px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.verse-text-arabic {
+    font-family: Quran;
+    font-size: 30px;
+}
+
+.verse-end {
+    position: relative;
+    font-family: Quran-2;
+    font-size: 50px;
+    bottom:37px;
+    right: 10px
+}
+
+.verse-english {
+    margin-bottom: 200px;
+}
+
+.verse-text-english {
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.box {
+    display: flex;
+}
+
+.about-heading {
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    width: 60%;
+    top: 20px
+
+}
+
+.about-paragraph {
+    position: relative;
+    max-width: 50%;
+    right: 50px;
+}
+
+.get-started-button {
+    position: absolute;
+    font-size: 20px;
+    right: 0;
+    text-decoration: none;
+    top: 5px
+}
+
+.get-started-button a {
+    text-decoration: none;
+}
+
+.image {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    left: 100px;
+    top: 25px;
+}
+
+.form-block {
+    display: flex;
+    justify-content: center;
+    margin-top: 600px;
+    margin-bottom: 500px;
+}
+
+form {
+    display: block;
+    background-color: white;
+    max-width: 600px;
+    max-height: 700px;
+}
+
+form input, textarea {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px auto;
+    padding: 8px;
+
+}
+
+form span {
+    color: blue;
+}
+
+form button {
+    height: 30px;
+    width: 80px;
+    align-items: center;
+    background-color: blue;
+    color: white
+}
