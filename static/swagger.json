@@ -1,0 +1,148 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Sample API",
+      "description": "A simple API with one endpoint",
+      "version": "1.0"
+    },
+    "paths": {
+      "/api/surahs/all": {
+        "get": {
+          "summary": "Get all the surahs in the Quran",
+          "description": "Returns all the surahs in the Quran in chronological order with all properties. Properties include verses, the number of verses, name, order, and place of revelation.",
+          "produces": ["application/json", "text/html"],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/surahs/makki": {
+        "get": {
+          "summary": "Get all Makki surahs",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "surah_number": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/surahs/madani": {
+        "get": {
+          "summary": "Get all Madani surahs",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "surah_number": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/surahs/{surahNumber}": {
+        "get": {
+          "summary": "Get a specific surah by number",
+          "parameters": [
+            {
+              "name": "surahNumber",
+              "in": "path",
+              "description": "The number of the surah",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "surahNumber": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Surah not found"
+            }
+          }
+        }
+      },
+      "/api/surahs/verse/{verse_number}": {
+        "get": {
+          "summary": "Get a specific ayah by number",
+          "parameters": [
+            {
+              "name": "verse_number",
+              "in": "path",
+              "description": "The number of the ayah",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "surah_number": {
+                    "type": "integer"
+                  },
+                  "ayah_number_within_surah": {
+                    "type": "integer"
+                  },
+                  "ayah_content": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Ayah not found"
+            }
+          }
+        }
+      }
+    }
+  }
+  

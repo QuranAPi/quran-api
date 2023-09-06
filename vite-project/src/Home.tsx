@@ -12,7 +12,7 @@ function Home() {
         <div className="block title-block">
             <h1 className="title">QuranAPI</h1>
             <p className="subtitle">Your gateway to the timeless wisdom, guidance, and beauty of the Quran and Hadith.</p>
-            <p className="get-started-button"><Link to="/login">Documentation</Link></p>
+            <p className="get-started-button"><Link to="/Documentation">Documentation</Link></p>
         </div>
 
         <div className="block verse-block">

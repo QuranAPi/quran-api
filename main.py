@@ -12,14 +12,21 @@ from jwt import ExpiredSignatureError, DecodeError
 from flask_bcrypt import Bcrypt
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_cors import CORS
 import creds
+from flask_swagger_ui import get_swaggerui_blueprint
+
 
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = creds.secret_key
+
+SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
+API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -89,9 +96,9 @@ with open('quran.json') as f:
 def home():
     return render_template('home.html')
 
-@app.route('/public')
+@app.route('/api/public')
 def public():
-    return 'For Public'
+    return {"1":["2","3"]}
 
 @app.route('/auth')
 @token_required
@@ -150,8 +157,7 @@ def register():
     return render_template("register.html", form=form)
 
 # Get all surahs
-@app.route('/surahs/all')
-@token_required
+@app.route('/api/surahs/all')
 @limiter.limit('10 per day')
 def get_surahs():
     surahs = []
@@ -159,7 +165,8 @@ def get_surahs():
         surah_info = {
             'number': surah['number'],
             'name': surah['name'],
-            'ayas': surah['ayas'],
+            # to make it right to left, do this for all arabic text
+            'ayas': [aya[::-1] for aya in surah['ayas']],
             'length': surah['length'],
             'place': surah['place'],
             'order': surah['order']
@@ -168,7 +175,7 @@ def get_surahs():
     return jsonify({'surahs': surahs})
 
 # Get a surah by its number
-@app.route('/surahs/<int:surah_number>')
+@app.route('/api/surahs/<int:surah_number>')
 @limiter.limit('10 per day')
 def get_surah(surah_number):
     if str(surah_number) not in quran_data:
@@ -177,7 +184,7 @@ def get_surah(surah_number):
     surah_info = {
         'number': surah['number'],
         'name': surah['name'],
-        'ayas': surah['ayas'],
+        'ayas': [aya[::-1] for aya in surah['ayas']],
         'length': surah['length'],
         'place': surah['place'],
         'order': surah['order']
@@ -185,7 +192,7 @@ def get_surah(surah_number):
     return jsonify(surah_info)
 
 
-@app.route('/verse/<int:verse_number>')
+@app.route('/api/surahs/verse/<int:ayah_number>')
 @limiter.limit('10 per day')
 def get_ayah_number(ayah_number):
     total_ayahs = 0
@@ -195,29 +202,49 @@ def get_ayah_number(ayah_number):
             surah_number = int(k)
             ayah_number_within_surah = ayah_number - total_ayahs
             ayah_content = v['ayas'][ayah_number_within_surah - 1]
-            return jsonify({"surah_number": surah_number, "ayah_number_within_surah": ayah_number_within_surah, "ayah_content": ayah_content})
+            return jsonify({"surah_number": surah_number, "ayah_number_within_surah": ayah_number_within_surah, "ayah_content": ayah_content[::-1]})
         total_ayahs += num_ayas
     return jsonify({"error": "Invalid ayah number"})
 
 
-@app.route('/surahs/makki')
+@app.route('/api/surahs/makki')
 @limiter.limit('10 per day')
 def get_makki_surahs():
     makki_surahs = []
     for surah in quran_data.values():
         if surah['place'] == 'Meccan':
             makki_surahs.append(surah)
+            surah['ayas'] = [aya[::-1] for aya in surah['ayas']]
     return jsonify(makki_surahs)
 
 
-@app.route('/surahs/madani')
+@app.route('/api/surahs/madani')
 @limiter.limit('10 per day')
 def get_madani_surahs():
     madani_surahs = []
     for surah in quran_data.values():
         if surah['place'] == 'Medinan':
             madani_surahs.append(surah)
+            surah['ayas'] = [aya[::-1] for aya in surah['ayas']]
     return jsonify(madani_surahs)
+
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,  # Swagger UI static files will be mapped to '{SWAGGER_URL}/dist/'
+    API_URL,
+    config={  # Swagger UI config overrides
+        'app_name': "Test application"
+    },
+    # oauth_config={  # OAuth config. See https://github.com/swagger-api/swagger-ui#oauth2-configuration .
+    #    'clientId': "your-client-id",
+    #    'clientSecret': "your-client-secret-if-required",
+    #    'realm': "your-realms",
+    #    'appName': "your-app-name",
+    #    'scopeSeparator': " ",
+    #    'additionalQueryStringParams': {'test': "hello"}
+    # }
+)
+
+app.register_blueprint(swaggerui_blueprint)
 
 
 if __name__ == '__main__':
