@@ -5,6 +5,7 @@
       "description": "A simple API with one endpoint",
       "version": "1.0"
     },
+    
     "paths": {
       "/api/surahs/all": {
         "get": {
