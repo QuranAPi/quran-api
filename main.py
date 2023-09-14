@@ -19,11 +19,13 @@ from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 limiter = Limiter(get_remote_address, app=app)
-db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = creds.secret_key
+
+db = SQLAlchemy(app)
+app.config['SECRET_KEY'] = 'HIIIIII'
 
 SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
 API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)

@@ -69,7 +69,8 @@
 .verse-arabic {
     max-height: 80px;
     display: flex;
-    position: relative;
+    margin-bottom: 10px;
+    
     justify-content: center;
 }
 

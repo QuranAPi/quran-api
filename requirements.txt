@@ -1,6 +1,11 @@
-Flask==2.1.0
-bs4==0.0.1
-requests==2.26.0
-arabic-reshaper==2.1.4
-python-bidi==0.4.2
-gunicorn==20.1.0
+Flask
+Flask-Bcrypt
+Flask-Cors
+Flask-Limiter
+Flask-Login
+Flask-SQLAlchemy
+Flask-Swagger-UI
+Flask-WTF
+jwt
+json
+WTForms

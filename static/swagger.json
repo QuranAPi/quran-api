@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-      "title": "Sample API",
-      "description": "A simple API with one endpoint",
+      "title": "Quran API",
+      "description": "An API to help build Quran applications.",
       "version": "1.0"
     },
     
