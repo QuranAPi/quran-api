@@ -16,44 +16,47 @@
     position: relative;
     text-align: center;
     /* background-color: aqua; */
-    max-width: 50%;
+    max-width: 70%;
     margin: 0 auto;
-    top:100px
+
 }
 
 .verse-block {
-    max-height: 300px;
+
 }
 
 .title-block {
-    top: 0px;
     position: sticky;
     background-color: white;
     z-index: 10;
-    max-width: 70%;
-    min-height: 60px;
     border-bottom: 2px solid #000;
+    margin-bottom: 150px;
+    display: flex;
+    flex-direction: column;
+  
+    @media (max-width: 600px) {
+      flex-direction: column-reverse;
+    }
 }
 
 .about-block {
-    top:500px;
-}
 
-.get-started.block {
 }
 
 .title {
     position: absolute;
     font-size: 40px;
-    left: 0;
-    top: -20px;
+
+
 }
 
 .subtitle {
     position: absolute;
     font-size: 20px;
-    left: 190px;
-    top: 5px
+
+    
+}
+.doc-button {
     
 }
 
@@ -67,10 +70,8 @@
 }
 
 .verse-arabic {
-    max-height: 80px;
+
     display: flex;
-    margin-bottom: 10px;
-    
     justify-content: center;
 }
 
@@ -83,12 +84,12 @@
     position: relative;
     font-family: Quran-2;
     font-size: 50px;
-    bottom:37px;
-    right: 10px
+
+
 }
 
 .verse-english {
-    margin-bottom: 200px;
+
 }
 
 .verse-text-english {
@@ -110,15 +111,12 @@
     position: relative;
     font-size: 20px;
     font-weight: bold;
-    width: 60%;
-    top: 20px
+
 
 }
 
 .about-paragraph {
     position: relative;
-    max-width: 50%;
-    right: 50px;
 }
 
 .get-started-button {
@@ -137,15 +135,11 @@
     position: relative;
     width: 50px;
     height: 50px;
-    left: 100px;
-    top: 25px;
 }
 
 .form-block {
     display: flex;
     justify-content: center;
-    margin-top: 600px;
-    margin-bottom: 500px;
 }
 
 form {
