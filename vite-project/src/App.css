@@ -22,6 +22,7 @@
 }
 
 .verse-block {
+
     max-height: 300px;
 }
 
@@ -68,7 +69,7 @@
 
 .verse-arabic {
     max-height: 80px;
-    display: flex;
+    display: inline-block;
     margin-bottom: 10px;
     
     justify-content: center;
@@ -89,6 +90,7 @@
 
 .verse-english {
     margin-bottom: 200px;
+    
 }
 
 .verse-text-english {
