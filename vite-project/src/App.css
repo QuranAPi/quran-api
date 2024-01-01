@@ -1,177 +1,77 @@
-@font-face {
-    font-family: Quran;
-    src: url(assets/Nabi.ttf);
-}
-
-@font-face {
-    font-family: Quran-2;
-    src: url(assets/Quran-2.otf);
-}
-
 * {
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.block {
-    position: relative;
-    text-align: center;
-    /* background-color: aqua; */
-    max-width: 75%;
-    margin: 0 auto;
-
-
+html {
+    scroll-behavior: smooth;
 }
 
-.verse-block {
-    /* max-height: 300px; */
-}
-
-.title-block {
+nav {
     position: sticky;
-    background-color: white;
-    z-index: 10;
-    border-bottom: 2px solid #000;
-    margin-bottom: 150px;
+    top: 0px;
+    background-color: orange;
+    min-width: 100%;
     display: flex;
-    flex-direction: column;
-  
-    @media (max-width: 600px) {
-      flex-direction: column-reverse;
-    }
-}
-
-.about-block {
+    justify-content: space-evenly;
 
 }
 
-.title {
-    position: absolute;
-    font-size: 40px;
+.navbar ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    color:black;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+
+.navbar a:hover {
+
+}
+
+.navbar li {
+    float: left;
+}
+
+
+.home {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+}
+
+.home-left {
+    max-width: 25%;
 
 
 }
 
-.subtitle {
-    position: absolute;
-    font-size: 20px;
-
-    
-}
-.doc-button {
-    
+.home-right {
+    background-color: blue;
+    max-width: 30%;
 }
 
 .heading {
-    position: relative;
-    font-size: 22.5px;
-}       
+    font-size: 40px;
+    color: rgb(70, 70, 70);
+}
 
-.paragraph {
+p {
     font-size: 20px;
 }
 
-.verse-arabic {
-    display: block;
-    margin-bottom: 100px;
-    justify-content: center;
-}
-
-.verse-text-arabic {
-    font-family: Quran;
-    font-size: 30px;
-    
-}
-
-.verse-end {
-    position: relative;
-    font-family: Quran-2;
-    font-size: 50px;
-
-
-}
-
-.verse-english {
-    display: block;
-}
-
-.verse-text-english {
-    
-    font-size: 20px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-
-.box {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.about-heading {
-    position: relative;
-    font-size: 20px;
-    font-weight: bold;
-
-
-}
-
-.about-paragraph {
-    position: relative;
-}
-
-.get-started-button {
-    position: absolute;
-    font-size: 20px;
-    right: 0;
-    text-decoration: none;
-    top: 5px
-}
-
-.get-started-button a {
-    text-decoration: none;
-}
-
-.image {
-    
-    position: relative;
-    width: 40px;
-    height: 40px;
-}
-
-.form-block {
-    display: flex;
-    justify-content: center;
-}
-
-form {
-    display: block;
-    background-color: white;
-    max-width: 600px;
-    max-height: 700px;
-}
-
-form input, textarea {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 10px auto;
-    padding: 8px;
-
-}
-
-form span {
-    color: blue;
-}
-
-form button {
-    height: 30px;
-    width: 80px;
-    align-items: center;
-    background-color: blue;
-    color: white
+.documentation {
+    margin-top: 300px;
+    background-color: aqua;
+    max-width: 30%;
+    margin-left: auto;
+    margin-right: auto;
 }
