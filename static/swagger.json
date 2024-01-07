@@ -7,7 +7,7 @@
     },
     
     "paths": {
-      "/api/surahs/all": {
+      "/api/chapter/all": {
         "get": {
           "summary": "Get all the surahs in the Quran",
           "description": "Returns all the surahs in the Quran in chronological order with all properties. Properties include verses, the number of verses, name, order, and place of revelation.",
@@ -27,7 +27,7 @@
           }
         }
       },
-      "/api/surahs/makki": {
+      "/api/chapter/meccan": {
         "get": {
           "summary": "Get all Makki surahs",
           "responses": {
@@ -51,7 +51,7 @@
           }
         }
       },
-      "/api/surahs/madani": {
+      "/api/chapter/medinan": {
         "get": {
           "summary": "Get all Madani surahs",
           "responses": {
@@ -75,7 +75,7 @@
           }
         }
       },
-      "/api/surahs/{surahNumber}": {
+      "/api/chapter/{chapterNumber}": {
         "get": {
           "summary": "Get a specific surah by number",
           "parameters": [
@@ -108,7 +108,7 @@
           }
         }
       },
-      "/api/surahs/verse/{verse_number}": {
+      "/api/verse/{verseNumber}": {
         "get": {
           "summary": "Get a specific ayah by number",
           "parameters": [
