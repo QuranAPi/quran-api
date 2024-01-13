@@ -7,5 +7,5 @@ Flask-SQLAlchemy
 Flask-Swagger-UI
 Flask-WTF
 jwt
-json
+simplejson
 WTForms
