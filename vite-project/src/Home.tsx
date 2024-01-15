@@ -285,7 +285,7 @@ function Home() {
                         <p>Feel free to raise issues, submit pull requests, and be part of our open-source community.</p>
                         
                     </div>
-                    <img src="./src/assets/logo.png"></img>
+                    <img src="logo.png"></img>
 
 
             </div>
