@@ -23,3 +23,7 @@ The data is loaded into memory when the API is started using the `json` package.
 ## Hosting
 
 This API is hosted with Vercel and can be accessed at https://quran-api-azure.vercel.app/.
+
+## Online Testing
+
+You may test the API online with Swagger on our website.
