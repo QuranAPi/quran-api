@@ -1,6 +1,8 @@
 # Quran API
 
-A Flask-based API that provides information about the Quran, including its chapters, verses, and more.
+A REST API that provides information about the Quran, including its chapters, verses, and more.
+
+The backend for this API was built with Flask, and the frontend was built with React.
 
 ## How to use
 
